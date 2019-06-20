@@ -12,3 +12,8 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
+build/webpack.base.conf.js
+.babelrc
+.editorconfig
+.firebaserc
+database.rules.json

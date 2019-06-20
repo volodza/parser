@@ -223,7 +223,7 @@ export default {
         country: this.selects.country.selected
       };
       this.answer = "";
-      this.$http.post("89.254.230.243:3000/getBirthdays", obj).then(res => {
+      this.$http.post(`http://${this.$store.getters.ip}getBirthdays`, obj).then(res => {
         this.answer = res.body;
       });
     },
@@ -231,7 +231,7 @@ export default {
       if (!this.selects.country.selected) return;
       this.selects.city.loading = true;
       this.$http
-        .post("http://89.254.230.243:3000/getCities", {
+        .post(`http://${this.$store.getters.ip}getCities`, {
           q: v
         })
         .then(res => {
@@ -242,7 +242,7 @@ export default {
     getCountries(v) {
       this.selects.country.loading = true;
       this.$http
-        .post("http://89.254.230.243:3000/getCountries", {
+        .post(`http://${this.$store.getters.ip}getCountries`, {
           q: v
         })
         .then(res => {

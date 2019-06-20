@@ -9,8 +9,8 @@
         <v-list two-line subheader v-else style="padding-bottom:20px">
 
           <v-list-tile
-            v-for="task in tasks"
-            :key="task.begin"
+            v-for="(task,index) in tasks"
+            :key="index"
             avatar
             style="height:50px;padding:0 0 0 0"
           >
@@ -116,7 +116,7 @@ export default {
       //     anchorTag.download = obj.user_id + ".txt"; 
       //     anchorTag.click();
       // });
-      fetch('http://89.254.230.243:3000/downloadAnswer', {
+      fetch(`http://${this.$store.getters.ip}downloadAnswer`, {
         method: 'POST',
         responseType: 'arraybuffer',
         body:JSON.stringify(obj),
@@ -134,7 +134,7 @@ export default {
       });
     },
     getTasks (){
-      this.$http.post('http://89.254.230.243:3000/getTasks',{
+      this.$http.post(`http://${this.$store.getters.ip}getTasks`,{
         user_id:this.$store.getters.user.id
       })
        .then(res =>{
@@ -149,16 +149,16 @@ export default {
         begin:task.begin
       };
 
-      this.$http.post('http://89.254.230.243:3000/deleteTask',obj)
+      this.$http.post(`http://${this.$store.getters.ip}deleteTask`,obj)
        .then(res =>{
          console.log(res.body)
          this.getTasks()
        })
     }
   },
-  created (){
-    this.interval = setInterval(() => this.getTasks(), 5000);
-  }
+  // created (){
+  //   this.interval = setInterval(() => this.getTasks(), 5000);
+  // }
 }
 </script>
 

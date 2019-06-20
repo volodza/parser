@@ -91,7 +91,7 @@ export default {
     getFriends() {
       this.answer = "";
       this.$http
-        .post("http://89.254.230.243:3000/getFriends", {
+        .post(`http://${this.$store.getters.ip}getFriends`, {
           user_ids: this.user_ids.split`\n`
         })
         .then(res => {

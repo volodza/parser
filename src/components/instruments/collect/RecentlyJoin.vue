@@ -83,7 +83,7 @@ export default {
         user_id:this.$store.getters.user.id
       };
       this.answer = "";
-      this.$http.post("http://89.254.230.243:3000/getRecentlyJoin", obj).then(res => {
+      this.$http.post(`http://${this.$store.getters.ip}getRecentlyJoin`, obj).then(res => {
         this.answer = res.body;
         this.$store.commit('setSuccess',res.body)
       });

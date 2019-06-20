@@ -9,6 +9,7 @@ import VueResource from 'vue-resource'
 import * as fb from 'firebase'
 
 
+
 Vue.use(VueResource)
 
 Vue.use(Vuetify, {

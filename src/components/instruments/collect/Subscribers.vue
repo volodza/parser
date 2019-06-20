@@ -101,7 +101,7 @@ export default {
         in_several_groups_to: this.inputs.inSeveralGroups.to
       };
       this.answer = "";
-      this.$http.post("http://89.254.230.243:3000/getSubscribers", obj).then(res => {
+      this.$http.post(`http://${this.$store.getters.ip}getSubscribers`, obj).then(res => {
         this.answer = res.body;
       });
     }

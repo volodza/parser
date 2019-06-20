@@ -352,7 +352,7 @@ export default {
   methods:{
     
     vkAuth (){
-      this.$http.get('http://89.254.230.243:3000/auth/vkontakte')
+      this.$http.get(`http://${this.$store.getters.ip}auth/vkontakte`)
       .then(response => {
         localStorage.access_token = response.body.access_token
         window.location.href = response.body.vk_url
@@ -361,11 +361,11 @@ export default {
     userLogout (){
       localStorage.removeItem('access_token')
       this.$store.commit('logout');
-      window.location.href = 'http://89.254.230.243:3000/'
+      window.location.href = `http://${this.$store.getters.ip}`
     },
     checkUserLogin (){
       if(!localStorage.access_token) return;
-      this.$http.post("http://89.254.230.243:3000/checkToken", {
+      this.$http.post(`http://${this.$store.getters.ip}checkToken`, {
           access_token: localStorage.access_token
         })
         .then(res => {
